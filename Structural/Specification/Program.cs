@@ -13,7 +13,7 @@ namespace Specification {
             };
 
             var smartSpecification = new ExpressionSpecification<Mobile>(mobile => mobile.Type == MobileType.Smart);
-            var appleSpecification = new ExpressionSpecification<Mobile>(mobile => mobile.Brand = MobileBrand.Apple);
+            var appleSpecification = new ExpressionSpecification<Mobile>(mobile => mobile.Brand == MobileBrand.Apple);
             // find all smart mobiles;
             var smartMobiles = mobiles.FindAll(mobile => smartSpecification.IsSatisfiedBy(mobile));
             // find all apple smart mobiles;
@@ -27,8 +27,8 @@ namespace Specification {
 
     class Mobile {
 
-        public MobileBrand Brand { get; }
-        public MobileType Type { get; }
+        public MobileBrand Brand { get; set; }
+        public MobileType Type { get; set; }
 
         public Mobile(MobileBrand brand, MobileType type) {
             Brand = brand;
